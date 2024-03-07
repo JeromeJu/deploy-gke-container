@@ -1,0 +1,50 @@
+name: 'Deploy GKE'
+description: 'Use gke-deploy cli to deploy an image'
+inputs:
+  image:
+    description: |-
+      Image to be deployed
+    required: true
+
+  app_name:
+    description: |-
+      Application name of the Kubernetes deployment
+    required: true
+
+  region:
+    description: |-
+      Region/zone of GKE cluster to deploy to.
+    required: true
+
+  cluster_name:
+    description: |-
+      Name of GKE cluster to deploy to.
+    required: true
+
+  project_id:
+    description: |-
+      Project of GKE cluster to deploy to.
+    required: true
+
+  namespace:
+    description: |-
+      Namespace of GKE cluster to deploy to.
+      If not provided, it will not be passed to the binary. 
+    required: true
+
+  expose:
+    description: |-
+      The port provided will be used to expose the deployed workload object (i.e., port and targetPort will be set to the value provided in this flag). 
+      If not provided, it will not be passed to the binary.
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.image }}
+    - ${{ inputs.app_name }}
+    - ${{ inputs.region }}
+    - ${{ inputs.cluster_name }}
+    - ${{ inputs.project_id }}
+    - ${{ inputs.namespace }}
+    - ${{ inputs.expose }}
