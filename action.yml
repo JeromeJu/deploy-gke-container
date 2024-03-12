@@ -30,13 +30,13 @@ inputs:
     description: |-
       Namespace of GKE cluster to deploy to.
       If not provided, it will not be passed to the binary. 
-    required: true
+    required: false
 
   expose:
     description: |-
       The port provided will be used to expose the deployed workload object (i.e., port and targetPort will be set to the value provided in this flag). 
       If not provided, it will not be passed to the binary.
-    required: true
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
