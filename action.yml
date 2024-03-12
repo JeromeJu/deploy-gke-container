@@ -43,5 +43,8 @@ runs:
   args:
     - ${{ inputs.image }}
     - ${{ inputs.app_name }}
+    - ${{ inputs.region }}
+    - ${{ inputs.cluster_name }}
+    - ${{ inputs.project_id }}
     - ${{ inputs.namespace }}
     - ${{ inputs.expose }}
